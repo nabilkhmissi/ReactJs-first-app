@@ -1,24 +1,25 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Posts from './components/posts/posts';
+import { data } from "./components/data"
 
-function App() {
+export function App() {
+  const [posts, setPosts] = useState(data)
+
+
+  function doSearch(e) {
+    const search = e.target.value
+    let result = data.filter(item => item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
+    setPosts(result);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='navbar'>
+        <input className='search-bar' placeholder='search...' onKeyUp={doSearch} />
+      </div>
+      <Posts posts={posts} />
+    </>
   );
 }
 
