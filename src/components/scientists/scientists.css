@@ -1,0 +1,15 @@
+.p-list {
+    padding: 2rem;
+    background-color: bisque;
+}
+
+.p-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.p-details {
+    display: flex;
+    flex-direction: column;
+}

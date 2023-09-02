@@ -3,6 +3,9 @@ import './App.css';
 import Posts from './components/posts/posts';
 import { data } from "./components/data"
 import Loading from './components/loading/loading';
+import Post from './components/post/post';
+import Scientists from './components/scientists/scientists';
+import Toolbar from './components/buttons/toolbar';
 
 export function App() {
   const [posts, setPosts] = useState(data)
@@ -30,7 +33,12 @@ export function App() {
     </>)
   }
 
-  return <>{rendering}</>;
+  return (
+    <>
+      {rendering}
+      <Toolbar />
+    </>
+  );
 }
 
 export default App;
