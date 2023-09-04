@@ -5,11 +5,17 @@ import "./posts.css"
 
 export default function Posts({ posts, handleLikeClick }) {
 
+    const [activeIndex, setActiveIndex] = useState(0);
+
     function handlePostLikeClick(post) {
         handleLikeClick(post)
     }
 
-    const postsCards = posts.map(post => <Post post={post} onLikeClick={handlePostLikeClick} key={post.id} />)
+    function handleActive(post) {
+        setActiveIndex(post.id);
+    }
+
+    const postsCards = posts.map(post => <Post post={post} toggleActive={handleActive} onLikeClick={handlePostLikeClick} isActive={activeIndex === post.id} key={post.id} />)
 
     return (
         <div className="post-container">

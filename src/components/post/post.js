@@ -1,13 +1,8 @@
 import { useState } from "react"
 import "./post.css"
-export default function Post({ post, onLikeClick }) {
+export default function Post({ post, onLikeClick, isActive, toggleActive }) {
 
-    const [showMore, setShowMore] = useState(false);
     const [liked, setLiked] = useState(false)
-
-    function handleShowMore() {
-        setShowMore(!showMore);
-    }
 
     function handleLikeClick() {
         post.likes = liked ? post.likes - 1 : post.likes + 1;
@@ -19,10 +14,10 @@ export default function Post({ post, onLikeClick }) {
         <div className="post-card">
             <h2> {post.title} </h2>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <button onClick={handleShowMore}>{showMore ? "hide" : "show More"} </button>
+                <button onClick={() => { toggleActive(post) }}>{isActive ? "hide" : "show More"} </button>
                 <button onClick={handleLikeClick} className={liked && 'liked'} >Like {post.likes}</button>
             </div>
-            {showMore && (<p>{post.content} </p>)}
+            {isActive && (<p>{post.content} </p>)}
         </div>
     )
 }
