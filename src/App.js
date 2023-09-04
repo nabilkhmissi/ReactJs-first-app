@@ -2,41 +2,30 @@ import { useState } from 'react';
 import './App.css';
 import Posts from './components/posts/posts';
 import { data } from "./components/data"
-import Loading from './components/loading/loading';
-import Post from './components/post/post';
-import Scientists from './components/scientists/scientists';
-import Toolbar from './components/buttons/toolbar';
+import Navbar from './components/navbar/navbar';
 
 export function App() {
   const [posts, setPosts] = useState(data)
-  const [loading, setLoading] = useState(true)
 
-  function doSearch(e) {
-    const search = e.target.value
-    let result = data.filter(item => item.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()));
-    setPosts(result);
+
+  function doSearch(keyword) {
+    setPosts(data.filter(post => post.title.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())));
   }
-  setTimeout(() => {
-    setLoading(false)
-  }, 1000);
 
-
-  let rendering = <Loading />
-  if (!loading) {
-    rendering = (<>
-      <div className='navbar'>
-        <h2>Newsy</h2>
-        <input className='search-bar' placeholder='search...' onKeyUp={doSearch} />
-        <div></div>
-      </div>
-      <Posts posts={posts} />
-    </>)
+  function likeClick(post) {
+    setPosts(posts.map(p => {
+      if (p.id === post.id) {
+        return post
+      } else {
+        return p
+      }
+    }))
   }
 
   return (
     <>
-      {rendering}
-      <Toolbar />
+      <Navbar onSearch={doSearch} />
+      <Posts posts={posts} handleLikeClick={likeClick} />
     </>
   );
 }

@@ -1,10 +1,15 @@
+import { useState } from "react";
 import Post from "../post/post";
 import "./posts.css"
 
 
-export default function Posts({ posts }) {
+export default function Posts({ posts, handleLikeClick }) {
 
-    const postsCards = posts.map(post => <Post post={post} key={post.id} />)
+    function handlePostLikeClick(post) {
+        handleLikeClick(post)
+    }
+
+    const postsCards = posts.map(post => <Post post={post} onLikeClick={handlePostLikeClick} key={post.id} />)
 
     return (
         <div className="post-container">

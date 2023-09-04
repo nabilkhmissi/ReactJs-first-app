@@ -1,7 +1,27 @@
 .post-card {
     padding: 1rem;
     background-color: white;
-    max-width: 50%;
+    width: 50%;
+}
+
+
+button {
+    margin-right: 0.5rem;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding: 0.2rem;
+    margin-top: 0.2rem;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+.liked {
+    background-color: black;
+    color: white;
 }
 
 @media (max-width:700px) {
