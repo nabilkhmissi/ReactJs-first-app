@@ -15,7 +15,7 @@ export default function Post({ post, onLikeClick, isActive, toggleActive }) {
             <h2> {post.title} </h2>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <button onClick={() => { toggleActive(post) }}>{isActive ? "hide" : "show More"} </button>
-                <button onClick={handleLikeClick} className={liked && 'liked'} >Like {post.likes}</button>
+                <button onClick={handleLikeClick} className={liked ? 'liked' : ''} >Like {post.likes}</button>
             </div>
             {isActive && (<p>{post.content} </p>)}
         </div>

@@ -1,0 +1,14 @@
+.tasklist-holder {
+    padding-top: 2rem;
+    background-color: #dddd;
+}
+
+.tasklist {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 1rem;
+    list-style-type: none;
+}

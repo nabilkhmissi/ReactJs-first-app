@@ -3,6 +3,7 @@ import './App.css';
 import Posts from './components/posts/posts';
 import { data } from "./components/data"
 import Navbar from './components/navbar/navbar';
+import TaskList from './components/tasklist/tasklist';
 
 export function App() {
   const [posts, setPosts] = useState(data)
@@ -25,6 +26,7 @@ export function App() {
   return (
     <>
       <Navbar onSearch={doSearch} />
+      <TaskList />
       <Posts posts={posts} handleLikeClick={likeClick} />
     </>
   );
