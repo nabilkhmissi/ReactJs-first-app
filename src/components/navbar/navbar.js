@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./navbar.css";
 
 
-export default function Navbar({ onSearch }) {
+export default function Navbar({ onSearch, mode, changeMode }) {
 
     const [loading, setLoading] = useState(false);
 
@@ -19,6 +19,11 @@ export default function Navbar({ onSearch }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                 {loading && (<img src="loader.svg" />)}
                 <input className='search-bar' placeholder='search...' onChange={handleSearch} />
+                <button onClick={changeMode}>
+                    <span class="material-symbols-outlined">
+                        {mode}
+                    </span>
+                </button>
             </div>
         </div>
     )

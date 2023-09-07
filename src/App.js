@@ -3,10 +3,12 @@ import './App.css';
 import Posts from './components/posts/posts';
 import { data } from "./components/data"
 import Navbar from './components/navbar/navbar';
-import TaskList from './components/tasklist/tasklist';
+import { ModeContext } from './components/context/modeContext';
 
 export function App() {
-  const [posts, setPosts] = useState(data)
+  const [posts, setPosts] = useState(data);
+  const [mode, setMode] = useState("light_mode");
+
 
 
   function doSearch(keyword) {
@@ -23,12 +25,18 @@ export function App() {
     }))
   }
 
+  function changeMode() {
+    mode === "light_mode" ? setMode("dark_mode") : setMode("light_mode");
+  }
+
   return (
-    <>
-      <Navbar onSearch={doSearch} />
-      <TaskList />
+    <ModeContext.Provider value={mode}>
+      <Navbar
+        mode={mode}
+        onSearch={doSearch}
+        changeMode={changeMode} />
       <Posts posts={posts} handleLikeClick={likeClick} />
-    </>
+    </ModeContext.Provider>
   );
 }
 
