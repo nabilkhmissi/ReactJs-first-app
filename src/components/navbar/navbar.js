@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./navbar.css";
+import { ModeContext } from "../context/modeContext";
 
 
-export default function Navbar({ onSearch, mode, changeMode }) {
+export default function Navbar({ onSearch, changeMode }) {
 
     const [loading, setLoading] = useState(false);
+
+    const mode = useContext(ModeContext)
 
     function handleSearch(e) {
         setLoading(true)

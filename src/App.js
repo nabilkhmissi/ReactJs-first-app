@@ -32,7 +32,6 @@ export function App() {
   return (
     <ModeContext.Provider value={mode}>
       <Navbar
-        mode={mode}
         onSearch={doSearch}
         changeMode={changeMode} />
       <Posts posts={posts} handleLikeClick={likeClick} />
