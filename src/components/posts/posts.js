@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import Post from "../post/post";
 import "./posts.css"
 import { ModeContext } from "../context/modeContext";
+import Notes from "../notes/notes";
 
 
 export default function Posts({ posts, handleLikeClick }) {
@@ -36,6 +37,7 @@ export default function Posts({ posts, handleLikeClick }) {
 
     return (
         <div className="post-container" style={setMode()}>
+            <Notes />
             {postsCards}
         </div>
     )
