@@ -1,11 +1,10 @@
-import { useContext, useRef, useState } from "react"
+import { useContext, useState } from "react"
 import "./post.css"
 import { ModeContext } from "../context/modeContext"
 export default function Post({ post, onLikeClick, isActive, toggleActive }) {
 
     const [liked, setLiked] = useState(false);
     const mode = useContext(ModeContext);
-    let cardElement = useRef(null);
 
     function handleLikeClick() {
         post.likes = liked ? post.likes - 1 : post.likes + 1;
@@ -32,18 +31,8 @@ export default function Post({ post, onLikeClick, isActive, toggleActive }) {
         }
     }
 
-
-    function handleMouseOver() {
-        cardElement.current.style.backgroundColor = "yellow"
-    }
-
-
-    function handleMouseLeave() {
-        cardElement.current.style.backgroundColor = "white";
-    }
-
     return (
-        <div className="post-card" style={changeMode()} ref={cardElement} onMouseOver={handleMouseOver} onMouseLeave={handleMouseLeave}>
+        <div className="post-card" style={changeMode()}>
             <h2> {post.title} </h2>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                 <button onClick={() => { toggleActive(post) }} style={changeButtonMode()}>{isActive ? "hide" : "show More"} </button>

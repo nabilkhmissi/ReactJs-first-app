@@ -1,42 +1,38 @@
-import { useContext, useRef, useState } from 'react';
-import { NotesContext } from '../context/notesContext';
+import "./notes.css"
+import { useEffect, useState } from 'react';
 import Note from '../note/note';
 
 
 
 export default function Notes() {
 
-    const notes = useContext(NotesContext);
-    const [timerStarted, setTimerStarted] = useState(false)
+    const [notes, setNotes] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    let timerRef = useRef(0);
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false)
+            setNotes([
+                { id: 1, title: "first note", done: false },
+                { id: 2, title: "second note", done: false },
+                { id: 3, title: "third note", done: false },
+            ]);
+        }, 1000);
+    })
 
-    function handleNoteDone(id) {
-        alert(id)
-        let n = notes.find(item => item.id === id);
-        n.done = !n.done;
+    function renderNotes(notes) {
+        return (
+            notes && notes.map(n => <Note key={n.id} note={n} />)
+        )
     }
-
-    function handleTimerStart() {
-        setTimerStarted(true)
-        timerRef.current = setTimeout(() => {
-            setTimerStarted(false);
-            alert("3 seconds ecoulés")
-        }, 3000);
-    }
-
-    function handleTimerStop() {
-        setTimerStarted(false);
-        timerRef.current = clearTimeout(timerRef.current)
-    }
+    const loader = <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <img src="loader.svg" style={{ width: '60px', textAlign: 'center' }} />
+    </div>;
 
     return (
-        <NotesContext.Provider>
-            <div className="notes">
-                <button onClick={handleTimerStart}>{timerStarted ? "timer started ..." : "Start Timer"}</button>
-                <button onClick={handleTimerStop}>Stop Timer</button>
-                {notes.map(n => <Note key={n.id} note={n} changeNoteDone={handleNoteDone} />)}
-            </div>
-        </NotesContext.Provider>
+        <div className="notes">
+            <h1>Notes List</h1>
+            {loading ? loader : renderNotes(notes)}
+        </div>
     )
 }

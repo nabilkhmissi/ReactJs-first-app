@@ -3,6 +3,7 @@ import Post from "../post/post";
 import "./posts.css"
 import { ModeContext } from "../context/modeContext";
 import Notes from "../notes/notes";
+import VideoPlayer from "../videoPlayer/videoPlayer";
 
 
 export default function Posts({ posts, handleLikeClick }) {
@@ -37,6 +38,7 @@ export default function Posts({ posts, handleLikeClick }) {
 
     return (
         <div className="post-container" style={setMode()}>
+            <VideoPlayer />
             <Notes />
             {postsCards}
         </div>
