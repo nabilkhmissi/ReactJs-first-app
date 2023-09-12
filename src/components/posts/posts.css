@@ -12,3 +12,13 @@
     padding: 0.5rem;
     margin: 0.5rem 0;
 }
+
+.player {
+    background-color: white;
+    padding: 1rem;
+    width: 50%;
+}
+
+.player video {
+    width: 100%;
+}

@@ -10,6 +10,7 @@ export default function Posts({ posts, handleLikeClick }) {
 
     const [activeIndex, setActiveIndex] = useState(0);
     const mode = useContext(ModeContext);
+    const [isPlaying, setIsPlaying] = useState(false);
 
     function handlePostLikeClick(post) {
         handleLikeClick(post)
@@ -38,7 +39,11 @@ export default function Posts({ posts, handleLikeClick }) {
 
     return (
         <div className="post-container" style={setMode()}>
-            <VideoPlayer />
+            <div className="player" onClick={() => setIsPlaying(!isPlaying)}>
+                <VideoPlayer
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    isPlaying={isPlaying} />
+            </div>
             <Notes />
             {postsCards}
         </div>
