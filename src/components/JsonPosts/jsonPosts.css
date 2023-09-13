@@ -1,0 +1,39 @@
+.posts {
+    background-color: #dddd;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.post {
+    width: 70%;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.post p {
+    padding: 1rem 0;
+}
+
+button {
+    padding: 0.3rem 0.5rem;
+    background-color: white;
+    color: #333;
+    border: 1px solid #333;
+    margin-top: 0.5rem;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #333;
+    color: white;
+}
+
+@media (max-width : 800px) {
+    .post {
+        width: 99%;
+    }
+}

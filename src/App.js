@@ -1,15 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import Posts from './components/posts/posts';
-import { data } from "./components/data"
-import Navbar from './components/navbar/navbar';
-import { ModeContext } from './components/context/modeContext';
+import JsonPosts from './components/JsonPosts/jsonPosts';
 
 export function App() {
-  const [posts, setPosts] = useState(data);
+
+  /* const [posts, setPosts] = useState(data);
   const [mode, setMode] = useState("light_mode");
-
-
 
   function doSearch(keyword) {
     setPosts(data.filter(post => post.title.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())));
@@ -28,15 +24,16 @@ export function App() {
   function changeMode() {
     mode === "light_mode" ? setMode("dark_mode") : setMode("light_mode");
   }
-
-  return (
-    <ModeContext.Provider value={mode}>
-      <Navbar
-        onSearch={doSearch}
-        changeMode={changeMode} />
-      <Posts posts={posts} handleLikeClick={likeClick} />
-    </ModeContext.Provider>
-  );
+ */
+  /*  return (
+     <ModeContext.Provider value={mode}>
+       <Navbar
+         onSearch={doSearch}
+         changeMode={changeMode} />
+       <Posts posts={posts} handleLikeClick={likeClick} />
+     </ModeContext.Provider> 
+   );*/
+  return (<JsonPosts />)
 }
 
 export default App;
