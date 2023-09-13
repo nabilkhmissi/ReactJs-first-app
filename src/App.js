@@ -1,12 +1,5 @@
-import Header from "./components/header";
-import PizzaMenu from "./components/pizza-menu";
+import Slider from "./components/slider/slider";
 
-export function App() {
-  return (
-    <div>
-      <PizzaMenu />
-    </div>
-  );
+export default function App() {
+  return <Slider />;
 }
-
-export default App;
