@@ -1,7 +1,12 @@
-export default function GroceryList({ items, onDelete, handleDone }) {
+export default function GroceryList({
+  items,
+  onDelete,
+  handleDone,
+  handleItemSelected,
+}) {
   const itemList = items.map((e) => (
     <li key={e.id}>
-      <input type="checkbox" onChange={() => handleDone(e.id)} />
+      <input type="checkbox" onChange={() => handleItemSelect(e.id)} />
       {e.done ? (
         <s>
           {e.name}
@@ -18,6 +23,10 @@ export default function GroceryList({ items, onDelete, handleDone }) {
       </button>
     </li>
   ));
+
+  function handleItemSelect(id) {
+    handleItemSelected(id);
+  }
   if (items.length === 0) {
     return <span style={{ textAlign: "center" }}>List is Empty</span>;
   }

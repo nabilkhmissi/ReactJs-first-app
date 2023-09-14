@@ -1,6 +1,7 @@
 import { useState } from "react";
 import GroceryList from "./grocery-list";
 import GroceryAdd from "./grocery-add";
+import Footer from "./footer";
 
 export default function Grocery() {
   const [list, setList] = useState([]);
@@ -9,8 +10,16 @@ export default function Grocery() {
     return (acc += item.price * item.quantity);
   }, 0);
 
+  const selectedItems = list.filter((item) => item.selected);
+
   function handleDelete(id) {
     setList([...list.filter((e) => e.id !== id)]);
+  }
+
+  function handleItemSelected(id) {
+    setList(
+      list.map((i) => (i.id === id ? { ...i, selected: !i.selected } : i))
+    );
   }
 
   function handleItemAdd(item) {
@@ -42,6 +51,7 @@ export default function Grocery() {
               items={list}
               onDelete={handleDelete}
               handleDone={handleDone}
+              handleItemSelected={handleItemSelected}
             />
           </ul>
           {total !== 0 && (
@@ -51,7 +61,7 @@ export default function Grocery() {
           )}
         </div>
       </div>
-      <div className="footer">Footer</div>
+      <Footer selectedItems={selectedItems} />
     </div>
   );
 }

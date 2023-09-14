@@ -6,6 +6,7 @@ export default function GroceryAdd({ addNewItem }) {
     quantity: 0,
     price: 0,
     done: false,
+    selected: false,
   });
 
   function handleNameChange(e) {

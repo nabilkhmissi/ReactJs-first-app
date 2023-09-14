@@ -147,5 +147,10 @@ ul > li:nth-child(even) {
 .footer {
   text-align: center;
   padding: 1rem 0;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #d0d7b2;
 }
 /* grocery end */
