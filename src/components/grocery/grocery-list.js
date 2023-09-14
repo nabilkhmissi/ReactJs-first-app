@@ -16,5 +16,13 @@ export default function GroceryList({ items, onDelete, handleDone }) {
       <button onClick={() => onDelete(e.id)}>X</button>
     </li>
   ));
-  return <>{itemList}</>;
+  return (
+    <>
+      {itemList.length > 0 ? (
+        itemList
+      ) : (
+        <span style={{ textAlign: "center" }}>List is Empty</span>
+      )}
+    </>
+  );
 }

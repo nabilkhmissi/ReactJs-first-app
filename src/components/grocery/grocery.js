@@ -43,7 +43,7 @@ export default function Grocery() {
               handleDone={handleDone}
             />
           </ul>
-          <div>Total : $ {total}</div>
+          {total !== 0 && <div>Total : $ {total}</div>}
         </div>
       </div>
       <div className="footer">Footer</div>
