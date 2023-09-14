@@ -13,7 +13,9 @@ export default function GroceryList({ items, onDelete, handleDone }) {
           {e.quantity} x ${e.price}
         </div>
       )}
-      <button onClick={() => onDelete(e.id)}>X</button>
+      <button className="btn-light" onClick={() => onDelete(e.id)}>
+        X
+      </button>
     </li>
   ));
   if (items.length === 0) {
