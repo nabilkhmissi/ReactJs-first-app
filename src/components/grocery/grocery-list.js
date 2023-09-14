@@ -1,6 +1,6 @@
 export default function GroceryList({ items, onDelete, handleDone }) {
   const itemList = items.map((e) => (
-    <li>
+    <li key={e.id}>
       <input type="checkbox" onChange={() => handleDone(e.id)} />
       {e.done ? (
         <s>
@@ -13,16 +13,13 @@ export default function GroceryList({ items, onDelete, handleDone }) {
           {e.quantity} x ${e.price}
         </div>
       )}
-      <button onClick={() => onDelete(e.id)}>X</button>
+      <button className="btn-light" onClick={() => onDelete(e.id)}>
+        X
+      </button>
     </li>
   ));
-  return (
-    <>
-      {itemList.length > 0 ? (
-        itemList
-      ) : (
-        <span style={{ textAlign: "center" }}>List is Empty</span>
-      )}
-    </>
-  );
+  if (items.length === 0) {
+    return <span style={{ textAlign: "center" }}>List is Empty</span>;
+  }
+  return <>{itemList}</>;
 }
