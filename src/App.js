@@ -1,5 +1,5 @@
-import Slider from "./components/slider/slider";
+import GroceryList from "./components/grocery/grocery";
 
 export default function App() {
-  return <Slider />;
+  return <GroceryList />;
 }
