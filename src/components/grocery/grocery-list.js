@@ -1,6 +1,6 @@
 export default function GroceryList({ items, onDelete, handleDone }) {
   const itemList = items.map((e) => (
-    <li>
+    <li key={e.id}>
       <input type="checkbox" onChange={() => handleDone(e.id)} />
       {e.done ? (
         <s>

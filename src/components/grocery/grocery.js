@@ -16,7 +16,7 @@ export default function Grocery() {
     setList([
       ...list,
       {
-        id: list.length++,
+        id: Date.now(),
         ...item,
         done: false,
       },
