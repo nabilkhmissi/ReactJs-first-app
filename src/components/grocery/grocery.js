@@ -5,8 +5,9 @@ import GroceryAdd from "./grocery-add";
 export default function Grocery() {
   const [list, setList] = useState([]);
 
-  let total = 0;
-  list.forEach((e) => (total += e.price * e.quantity));
+  let total = list.reduce((acc, item) => {
+    return (acc += item.price * item.quantity);
+  }, 0);
 
   function handleDelete(id) {
     setList([...list.filter((e) => e.id !== id)]);
@@ -43,7 +44,11 @@ export default function Grocery() {
               handleDone={handleDone}
             />
           </ul>
-          {total !== 0 && <div>Total : $ {total}</div>}
+          {total !== 0 && (
+            <div style={{ textAlign: "end", fontWeight: "bold" }}>
+              Total : $ {total}
+            </div>
+          )}
         </div>
       </div>
       <div className="footer">Footer</div>
