@@ -1,0 +1,42 @@
+.slider {
+  margin: 0 auto;
+  width: 60%;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+.points {
+  display: flex;
+  justify-content: space-between;
+}
+.point {
+  height: 70px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(194, 194, 194);
+  color: white;
+  border-radius: 50%;
+}
+.message {
+  text-align: center;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 0.8rem;
+  border: none;
+  background-color: purple;
+  border-radius: 50px;
+  color: white;
+}
+
+.active {
+  background-color: purple;
+}

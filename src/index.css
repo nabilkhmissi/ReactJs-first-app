@@ -5,7 +5,8 @@
   margin: 0;
   box-sizing: border-box;
   font-size: 18px;
-  transition: all .2s ease-out;
+  font-family: "Courier New", Courier, monospace;
+  transition: all 0.2s ease-out;
 }
 
 h1 {
@@ -23,3 +24,113 @@ h3 {
 button {
   cursor: pointer;
 }
+
+.container {
+  padding: 0 5%;
+}
+
+/* header */
+.header {
+  padding: 1rem 0;
+  text-align: center;
+  justify-content: space-between;
+}
+
+/* header end */
+
+/* pizza wrapper */
+.pizza-wrapper {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  padding: 5rem;
+}
+
+.main-title {
+  text-align: center;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.main-title span {
+  padding: 1rem;
+  justify-content: center;
+  border-top: 4px solid #333;
+  border-bottom: 4px solid #333;
+}
+/* pizza wrapper end */
+/* pizza card */
+.pizza-card {
+  display: flex;
+  padding: 1rem;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.pizza-card img {
+  max-width: 200px;
+}
+
+.pizza-card.sold-out {
+  color: #888;
+}
+.pizza-card.sold-out img {
+  filter: grayscale();
+}
+
+.pizza-price {
+  margin-top: 1rem;
+}
+.pizza-price span {
+  font-size: 25px;
+  font-weight: bolder;
+  border-radius: 50px;
+}
+/* pizza card end*/
+/* grocery */
+.grocery-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: aliceblue;
+}
+.grocery-main {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2rem;
+  gap: 1rem;
+}
+.g-section {
+  padding: 1rem;
+  width: 50%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.add {
+  background-color: antiquewhite;
+}
+.g-list {
+  background-color: rgb(205, 240, 196);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+ul > li {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: space-between;
+}
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+}
+/* grocery end */
