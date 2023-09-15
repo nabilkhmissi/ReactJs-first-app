@@ -8,7 +8,7 @@ import PizzaForm from "./pizza-form";
 export default function PizzaMenu() {
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState(true);
+  const [form, setForm] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -50,11 +50,7 @@ export default function PizzaMenu() {
   }
 
   function handlePostDelete(id) {
-    axios
-      .delete(
-        `https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas/${id}.json`
-      )
-      .then((response) => fetchData());
+    axios.delete(`/pizzas/${id}.json`).then((response) => fetchData());
   }
 
   return (

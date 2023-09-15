@@ -8,15 +8,12 @@ export default function PizzaForm({ showForm, addedPizza }) {
   const [image, setImage] = useState("");
 
   function addPizzaInServer() {
-    axios.post(
-      `https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json`,
-      {
-        name: name,
-        ingredients: ingredients,
-        image: image,
-        price: price,
-      }
-    );
+    axios.post(`/pizzas.json`, {
+      name: name,
+      ingredients: ingredients,
+      image: image,
+      price: price,
+    });
   }
 
   function handleNameChange(e, field) {
