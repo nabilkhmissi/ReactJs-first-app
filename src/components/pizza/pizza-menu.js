@@ -14,11 +14,10 @@ export default function PizzaMenu() {
     fetchData();
   }, []);
 
-  async function fetchData() {
-    const response = await axios.get(
-      "https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json"
-    );
-    setList(processResponse(response));
+  function fetchData() {
+    axios
+      .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json")
+      .then((response) => setList(processResponse(response)));
   }
 
   function processResponse(response) {
@@ -47,6 +46,15 @@ export default function PizzaMenu() {
   function handlePizzaAdd(pizza) {
     setForm(!form);
     setList([...list, pizza]);
+    fetchData();
+  }
+
+  function handlePostDelete(id) {
+    axios
+      .delete(
+        `https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas/${id}.json`
+      )
+      .then((response) => fetchData());
   }
 
   return (
@@ -65,7 +73,11 @@ export default function PizzaMenu() {
         <ul className="pizza-wrapper container">
           {list.map((p) => (
             <li key={p.id}>
-              <Pizza pizzaObj={p} selectPizza={handlePizzaSelect} />
+              <Pizza
+                pizzaObj={p}
+                selectPizza={handlePizzaSelect}
+                deletePost={handlePostDelete}
+              />
             </li>
           ))}
         </ul>

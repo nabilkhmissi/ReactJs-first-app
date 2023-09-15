@@ -1,10 +1,12 @@
-export default function Pizza({ pizzaObj, selectPizza }) {
+export default function Pizza({ pizzaObj, selectPizza, deletePost }) {
   return (
     <div
       className={`pizza-card ${pizzaObj.soldOut ? "sold-out" : ""}`}
       onClick={() => selectPizza(pizzaObj.id)}
-     >
-      <span className="pizza-del">X</span>
+    >
+      <span className="pizza-del" onClick={() => deletePost(pizzaObj.id)}>
+        X
+      </span>
       <img src={pizzaObj.image} />
       <div className="pizza-details">
         <h2>{pizzaObj.name}</h2>
