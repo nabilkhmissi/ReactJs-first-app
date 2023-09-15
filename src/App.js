@@ -1,5 +1,5 @@
-import GroceryList from "./components/grocery/grocery";
+import PizzaMenu from "./components/pizza/pizza-menu";
 
 export default function App() {
-  return <GroceryList />;
+  return <PizzaMenu />;
 }
