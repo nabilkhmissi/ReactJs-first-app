@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default function PizzaForm({ showForm, addedPizza }) {
+export default function PizzaForm() {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [price, setPrice] = useState(0);
   const [image, setImage] = useState("");
+  const [notif, setNotif] = useState('')
 
   function addPizzaInServer() {
     axios.post(`/pizzas.json`, {
@@ -13,6 +14,8 @@ export default function PizzaForm({ showForm, addedPizza }) {
       ingredients: ingredients,
       image: image,
       price: price,
+    }).then(response => {
+      setNotif("pizza added successfully !")
     });
   }
 
@@ -43,13 +46,14 @@ export default function PizzaForm({ showForm, addedPizza }) {
       image: image,
       price: price,
     };
+    /*     console.log(pizza) */
     addPizzaInServer(pizza);
-    addedPizza({ ...pizza, id: Date.now() });
   }
 
   return (
     <div className="backdrop">
       <form className="pizza-form">
+        {notif.length > 0 && <div className="notif-success">{notif}</div>}
         <h1>Add new Pizza</h1>
         <br />
         <div className="form-group">

@@ -1,13 +1,11 @@
-export default function Pizza({ pizzaObj, selectPizza, deletePost }) {
+import { Link } from "react-router-dom";
+
+export default function Pizza({ pizzaObj }) {
   return (
-    <div
+    <Link
       className={`pizza-card ${pizzaObj.soldOut ? "sold-out" : ""}`}
-      onClick={() => selectPizza(pizzaObj.id)}
-    >
-      <span className="pizza-del" onClick={() => deletePost(pizzaObj.id)}>
-        X
-      </span>
-      <img src={pizzaObj.image} />
+      to={`${pizzaObj.id}`}>
+      <img src={pizzaObj.image} alt={pizzaObj.name} />
       <div className="pizza-details">
         <h2>{pizzaObj.name}</h2>
         <p>{pizzaObj.ingredients}</p>
@@ -15,6 +13,6 @@ export default function Pizza({ pizzaObj, selectPizza, deletePost }) {
           <span> {pizzaObj.soldOut ? "SOLD OUT" : "$" + pizzaObj.price}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
