@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
+
 export default function Pizza({ pizzaObj, selectPizza, deletePost }) {
   return (
-    <div
+    <Link
       className={`pizza-card ${pizzaObj.soldOut ? "sold-out" : ""}`}
-      onClick={() => selectPizza(pizzaObj.id)}
-    >
+      to={`${pizzaObj.id}`}>
       <span className="pizza-del" onClick={() => deletePost(pizzaObj.id)}>
         X
       </span>
@@ -15,6 +16,6 @@ export default function Pizza({ pizzaObj, selectPizza, deletePost }) {
           <span> {pizzaObj.soldOut ? "SOLD OUT" : "$" + pizzaObj.price}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
