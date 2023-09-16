@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function PizzaDetails({ closeDetails }) {
 
@@ -16,6 +16,9 @@ export default function PizzaDetails({ closeDetails }) {
 
   return (
     <>
+      <div style={{ textAlign: "center", padding: "1rem 0" }}>
+        <Link to=".." relative="path" >Go Back</Link>
+      </div >
       {pizza ? (<div className="backdrop">
         <div className="pizza-details-card">
           <div className="image">

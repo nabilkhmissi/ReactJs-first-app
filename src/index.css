@@ -382,3 +382,22 @@ a {
   padding: 1rem;
   gap: 1rem;
 }
+
+.sandwiches {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  padding: 0;
+  margin: 0;
+  padding: 1rem;
+}
+
+.sandwich {
+  width: 60%;
+  border: 1px solid #dddd;
+  padding: 1rem;
+  cursor: pointer;
+}

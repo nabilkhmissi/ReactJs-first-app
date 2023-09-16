@@ -4,7 +4,7 @@ export default function Pizza({ pizzaObj }) {
   return (
     <Link
       className={`pizza-card ${pizzaObj.soldOut ? "sold-out" : ""}`}
-      to={`${pizzaObj.id}`}>
+      to={`pizzas/${pizzaObj.id}`}>
       <img src={pizzaObj.image} alt={pizzaObj.name} />
       <div className="pizza-details">
         <h2>{pizzaObj.name}</h2>
