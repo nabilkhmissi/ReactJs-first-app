@@ -50,9 +50,6 @@ export default function PizzaForm({ showForm, addedPizza }) {
   return (
     <div className="backdrop">
       <form className="pizza-form">
-        <div className="card-close" onClick={showForm}>
-          X
-        </div>
         <h1>Add new Pizza</h1>
         <br />
         <div className="form-group">
