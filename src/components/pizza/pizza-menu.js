@@ -1,14 +1,15 @@
 import Pizza from "./pizza";
-import Header from "../header";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BrowserRouter } from "react-router-dom";
 import PizzaDetails from "./pizza-details";
 import PizzaForm from "./pizza-form";
+import PizzaHeader from "./pizza-header";
 
-export default function PizzaMenu() {
+export default function Menu() {
   const [list, setList] = useState([]);
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState(true);
+  const [form, setForm] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -50,25 +51,16 @@ export default function PizzaMenu() {
   }
 
   function handlePostDelete(id) {
-    axios
-      .delete(
-        `https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas/${id}.json`
-      )
-      .then((response) => fetchData());
+    axios.delete(`/pizzas/${id}.json`).then((response) => fetchData());
   }
 
   return (
     <>
-      <Header />
-      {form && (
-        <PizzaForm showForm={handleFormShow} addedPizza={handlePizzaAdd} />
-      )}
-      <div className="main-title">
-        <span>Our Pizzas</span>
-        <span className="add-pizza" onClick={handleFormShow}>
-          Add pizza
-        </span>
-      </div>
+      {
+        form && (
+          <PizzaForm showForm={handleFormShow} addedPizza={handlePizzaAdd} />
+        )
+      }
       <section>
         <ul className="pizza-wrapper container">
           {list.map((p) => (

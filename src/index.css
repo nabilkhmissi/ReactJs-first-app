@@ -20,15 +20,18 @@ h2 {
 h3 {
   font-size: 20px;
 }
+
 ul {
   list-style-type: none;
 }
+
 button {
   cursor: pointer;
   padding: 0.5rem;
   background-color: white;
   border: 1px solid black;
 }
+
 .btn-light {
   padding: 0;
   border: none;
@@ -50,6 +53,7 @@ button {
 .add-pizza {
   cursor: pointer;
 }
+
 .add-pizza:hover {
   color: orangered;
 }
@@ -76,13 +80,41 @@ button {
   padding: 1rem;
   margin: 1rem 0;
 }
+
 .main-title span {
   padding: 1rem;
   justify-content: center;
   border-top: 4px solid #333;
   border-bottom: 4px solid #333;
 }
+
 /* pizza wrapper end */
+
+.pizza-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  background-color: orange;
+}
+
+.pizza-header .header-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-links a {
+  padding: 1rem;
+  color: black;
+  text-decoration: none;
+
+}
+
+.header-links a:hover {
+  text-decoration: underline;
+}
+
 /* pizza card */
 .pizza-card {
   display: flex;
@@ -93,9 +125,11 @@ button {
   cursor: pointer;
   position: relative;
 }
+
 .pizza-card:hover {
   outline: 1px solid #dddd;
 }
+
 .pizza-del {
   position: absolute;
   top: 0;
@@ -119,6 +153,7 @@ button {
 .pizza-card.sold-out {
   color: #888;
 }
+
 .pizza-card.sold-out img {
   filter: grayscale();
 }
@@ -126,11 +161,13 @@ button {
 .pizza-price {
   margin-top: 1rem;
 }
+
 .pizza-price span {
   font-size: 25px;
   font-weight: bolder;
   border-radius: 50px;
 }
+
 /* pizza card end*/
 /* grocery */
 .grocery-list {
@@ -139,12 +176,14 @@ button {
   gap: 1rem;
   background-color: aliceblue;
 }
+
 .grocery-main {
   display: flex;
   justify-content: space-between;
   padding: 0 2rem;
   gap: 1rem;
 }
+
 .g-section {
   padding: 1rem;
   width: 50%;
@@ -155,22 +194,26 @@ button {
   flex-direction: column;
   margin-bottom: 1rem;
 }
+
 .add {
   background-color: antiquewhite;
 }
+
 .g-list {
   background-color: rgb(205, 240, 196);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+
 .list {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 }
-.list ul > li {
+
+.list ul>li {
   display: flex;
   gap: 0.3rem;
   justify-content: space-between;
@@ -178,9 +221,10 @@ button {
   padding: 0.5rem 1rem;
 }
 
-.list ul > li:nth-child(even) {
+.list ul>li:nth-child(even) {
   background-color: rgb(183, 220, 173);
 }
+
 .footer {
   text-align: center;
   padding: 1rem 0;
@@ -190,6 +234,7 @@ button {
   left: 0;
   background-color: #d0d7b2;
 }
+
 /* grocery end */
 
 /* pizza details card */
@@ -218,6 +263,7 @@ button {
   height: 100%;
   object-fit: contain;
 }
+
 .pizza-details-card .details {
   display: flex;
   flex-direction: column;
@@ -225,27 +271,6 @@ button {
   padding: 1rem;
 }
 
-.backdrop {
-  position: fixed;
-  z-index: 99;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.514);
-}
-.card-close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 30px;
-  padding: 0.5rem;
-  border-radius: 100px;
-  cursor: pointer;
-}
 /* pizza details card end */
 /* pizza form */
 .pizza-form {
@@ -256,13 +281,76 @@ button {
   flex-direction: column;
   width: 50%;
   position: relative;
+  margin: 0 auto;
+  margin-top: 2rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.136);
 }
 
 .pizza-form .form-group {
   gap: 0.5rem;
 }
+
 .pizza-form input {
   padding: 0.5rem 0;
 }
 
 /* pizza form end */
+
+
+/* hero section  */
+.hero {
+  height: 70vh;
+  background-image: url("https://img.freepik.com/premium-photo/tasty-pepperoni-pizza-black-concrete-background_79782-102.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  padding: 2rem;
+  justify-content: end;
+  align-items: center;
+
+}
+
+.hero .text {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 50px;
+}
+
+/* hero section end */
+
+
+@media screen and (max-width:500px) {
+  .hero .text {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pizza-header {
+    position: relative;
+    padding: 0;
+  }
+
+  .pizza-header .header-links {
+    position: absolute;
+    top: 100%;
+    background-color: white;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    margin: 0;
+  }
+
+  .hero {
+    background-position: left;
+  }
+
+  .hero .text h1 {
+    font-size: 30px;
+  }
+}
