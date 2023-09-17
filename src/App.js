@@ -16,11 +16,11 @@ import PageNotFound from "./components/pizza/pageNotFound";
 export default function App() {
 
   const router = createBrowserRouter(createRoutesFromElements(
-    <Route path="/" element={<Layout />} >
+    <Route path="/" element={<Layout />} errorElement={<h1>this is an error </h1>} >
       <Route index element={<PizzaHero />}></Route>
       <Route path="add" element={<PizzaForm />} />
       <Route path="menu" element={<Menu />}>
-        <Route index element={<PizzasMenu />} loader={pizzaLoader} errorElement={<h1>this is an error </h1>} />
+        <Route index element={<PizzasMenu />} loader={pizzaLoader} />
         <Route path="pizzas/:id" element={<PizzaDetails />}>
           <Route index element={<PizzaDetailsIngredients />}></Route>
           <Route path="images" element={<PizzaDetailsImages />}></Route>
