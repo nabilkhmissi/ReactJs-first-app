@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-export default function Pizza({ pizzaObj }) {
+export default function Pizza({ pizzaObj, state }) {
   return (
     <Link
       className={`pizza-card ${pizzaObj.soldOut ? "sold-out" : ""}`}
-      to={`pizzas/${pizzaObj.id}`}>
+      to={`pizzas/${pizzaObj.id}`} state={state}>
       <img src={pizzaObj.image} alt={pizzaObj.name} />
       <div className="pizza-details">
         <h2>{pizzaObj.name}</h2>

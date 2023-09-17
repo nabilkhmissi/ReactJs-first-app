@@ -53,6 +53,7 @@ export default function PizzasMenu() {
                                 <li key={p.id}>
                                     <Pizza
                                         pizzaObj={p}
+                                        state={{ filter }}
                                     />
                                 </li>
                             ))
