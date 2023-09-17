@@ -11,12 +11,14 @@ import Layout from "./components/pizza/layout";
 import PizzaDetailsIngredients from "./components/pizza/pizza-details-ingredients";
 import PizzaDetailsImages from "./components/pizza/pizza-details-images";
 import PizzaDetailsPricing from "./components/pizza/pizza-details-pricing";
+import PageNotFound from "./components/pizza/pageNotFound";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />} >
+          <Route path="*" element={<PageNotFound />}></Route>
           <Route index element={<PizzaHero />}></Route>
           <Route path="add" element={<PizzaForm />} />
           <Route path="menu" element={<Menu />}>

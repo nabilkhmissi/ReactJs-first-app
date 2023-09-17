@@ -340,6 +340,10 @@ a {
     text-align: center;
   }
 
+  .pizza-form {
+    width: 90%;
+  }
+
   .pizza-header {
     position: relative;
     padding: 0;
@@ -409,4 +413,8 @@ a {
 .selected {
   background-color: black;
   color: white;
+}
+
+.mt-3 {
+  margin-top: 2rem;
 }
