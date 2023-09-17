@@ -6,6 +6,13 @@ import { useLoaderData, useSearchParams } from "react-router-dom";
 export function pizzaLoader() {
 
     async function fetchData() {
+        const random = Math.floor(Math.random() * 10);
+        if (random % 2 === 0) {
+            throw {
+                message: "Oops ! an error has occured",
+                status: 500
+            }
+        }
         const data = await axios
             .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json");
         return processResponse(data)
