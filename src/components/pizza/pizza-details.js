@@ -18,7 +18,7 @@ export default function PizzaDetails({ closeDetails }) {
   return (
     <>
       <div style={{ textAlign: "center", padding: "1rem 0" }}>
-        <Link to="../.." relative="path" >Go Back</Link>
+        <Link to="/menu" relative="path" >Go Back</Link>
       </div >
       {pizza && (<div className="backdrop">
         <div className="pizza-details-card">

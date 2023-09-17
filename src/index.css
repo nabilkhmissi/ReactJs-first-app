@@ -362,6 +362,10 @@ a {
   .hero .text h1 {
     font-size: 30px;
   }
+
+  .pizza-details-card {
+    width: 90%;
+  }
 }
 
 .notif-success {
