@@ -25,18 +25,21 @@ export default function PizzasMenu() {
     }
     return (
         <>
+            <h1 style={{ textAlign: "center", padding: "1rem 0" }}>Our Pizzas</h1>
             {
-                list ? (<ul className="pizza-wrapper container" >
-                    {
-                        list.map((p) => (
-                            <li key={p.id}>
-                                <Pizza
-                                    pizzaObj={p}
-                                />
-                            </li>
-                        ))
-                    }
-                </ul>) : <div>Loading...</div>
+                list.length !== 0 ? (
+                    <ul className="pizza-wrapper container" >
+                        {
+                            list.map((p) => (
+                                <li key={p.id}>
+                                    <Pizza
+                                        pizzaObj={p}
+                                    />
+                                </li>
+                            ))
+                        }
+                    </ul>
+                ) : <div>Loading...</div>
             }
         </>
 

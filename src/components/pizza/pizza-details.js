@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
+import PizzaDetailsNav from "./pizza-details-nav";
 
 export default function PizzaDetails({ closeDetails }) {
 
@@ -17,9 +18,9 @@ export default function PizzaDetails({ closeDetails }) {
   return (
     <>
       <div style={{ textAlign: "center", padding: "1rem 0" }}>
-        <Link to=".." relative="path" >Go Back</Link>
+        <Link to="../.." relative="path" >Go Back</Link>
       </div >
-      {pizza ? (<div className="backdrop">
+      {pizza && (<div className="backdrop">
         <div className="pizza-details-card">
           <div className="image">
             <img src={pizza.image} alt={pizza.name} />
@@ -29,8 +30,10 @@ export default function PizzaDetails({ closeDetails }) {
             <div>{pizza.ingredients}</div>
             <h1>$ {pizza.price}</h1>
           </div>
+          <PizzaDetailsNav />
+          <Outlet context={pizza} />
         </div>
-      </div>) : <div>Loading ...</div>
+      </div>)
       }
     </>
   );
