@@ -11,6 +11,7 @@ export default function PizzaHeader() {
         <NavLink className="header-link" to="/" >Home</NavLink>
         <NavLink className="header-link" to="/menu" >Our Menu</NavLink>
         <NavLink className="header-link" to="/add">Add New</NavLink>
+        <NavLink className="header-link" to="/protected">Protected</NavLink>
       </div>
     </div>
   );

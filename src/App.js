@@ -13,6 +13,8 @@ import PizzaDetailsImages from "./components/pizza/pizza-details-images";
 import PizzaDetailsPricing from "./components/pizza/pizza-details-pricing";
 import PageNotFound from "./components/pizza/pageNotFound";
 import Error from "./components/pizza/error";
+import ProtectedRoute from "./components/pizza/protected-route";
+import Login from "./components/pizza/login";
 
 export default function App() {
 
@@ -20,6 +22,12 @@ export default function App() {
     <Route path="/" element={<Layout />} >
       <Route index element={<PizzaHero />}></Route>
       <Route path="add" element={<PizzaForm />} />
+      <Route path="login" element={<Login />} />
+
+      <Route element={<ProtectedRoute />}>
+        <Route path="protected" element={<h1>Protected ressource</h1>} />
+      </Route>
+
       <Route path="menu" element={<Menu />}>
         <Route index element={<PizzasMenu />} loader={pizzaLoader} errorElement={<Error />} />
         <Route path="pizzas/:id" element={<PizzaDetails />}>
