@@ -1,22 +1,14 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Pizza from "./pizza";
-import { useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 
-export default function PizzasMenu() {
 
-    const [list, setList] = useState([]);
+export function pizzaLoader() {
 
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    const [searchParams, setSerachParams] = useSearchParams({});
-
-    function fetchData() {
-        axios
-            .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json")
-            .then((response) => setList(processResponse(response)));
+    async function fetchData() {
+        const data = await axios
+            .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json");
+        return processResponse(data)
     }
 
     function processResponse(response) {
@@ -26,9 +18,16 @@ export default function PizzasMenu() {
         }
         return data;
     }
+    return fetchData()
+    /*  throw new Error("this is an error") */
+}
 
+
+export default function PizzasMenu() {
+
+    const list = useLoaderData();
+    const [searchParams, setSerachParams] = useSearchParams({});
     const filter = searchParams.get("ingredient");
-
     const pizzas_list = filter ? list.filter(p => p.ingredients.toLowerCase().includes(filter.toLowerCase())) : list
 
     return (
@@ -40,10 +39,6 @@ export default function PizzasMenu() {
                 <button onClick={() => setSerachParams({ ingredient: "mozarella" })} className={filter === "mozarella" ? 'selected' : ''} >Mozarella</button>
                 <button onClick={() => setSerachParams({ ingredient: "cheese" })} className={filter === "cheese" ? 'selected' : ''}>Cheese</button>
                 {filter && <button onClick={() => setSerachParams({})}>Clear</button>}
-
-                {/*           <NavLink to="?ingredient=tomato" >Tomato</NavLink>
-                <NavLink to="?ingredient=mozarella" >Mozarella</NavLink>
-                <NavLink to=".">Clear filter</NavLink> */}
             </div >
             {
                 list.length !== 0 ? (

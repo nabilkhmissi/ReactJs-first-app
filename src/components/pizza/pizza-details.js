@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import PizzaDetailsNav from "./pizza-details-nav";
 
+
 export default function PizzaDetails({ closeDetails }) {
 
   const [pizza, setPizza] = useState(null)
