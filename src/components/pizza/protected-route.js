@@ -1,11 +1,18 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 
+
+
+export function loader() {
+    const isLoggedIn = false;
+    if (!isLoggedIn) {
+        return redirect("/login?message=You have to login first")
+    }
+    return "Protected route"
+}
 export default function ProtectedRoute() {
 
-    const isLoggedIn = true;
+    const msg = useLoaderData();
 
-    if (!isLoggedIn) {
-        return <Navigate to={"login"} />
-    }
-    return <Outlet />
+
+    return <h1>{msg}</h1>
 }

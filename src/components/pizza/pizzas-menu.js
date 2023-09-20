@@ -1,10 +1,9 @@
 import axios from "axios";
 import Pizza from "./pizza";
-import { redirect, useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams } from "react-router-dom";
 
 
 export function pizzaLoader() {
-
     async function fetchData() {
         const random = Math.floor(Math.random() * 10);
         if (random % 2 === 0) {
@@ -15,11 +14,6 @@ export function pizzaLoader() {
         }
         const data = await axios
             .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json");
-
-        const isLoggedIn = true;
-        if (!isLoggedIn) {
-            return redirect("/login")
-        }
         return processResponse(data);
 
     }

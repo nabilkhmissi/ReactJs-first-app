@@ -427,3 +427,48 @@ a {
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.096);
   text-align: center;
 }
+
+.alert-warning {
+  padding: 1rem;
+  background-color: rgb(255, 203, 108);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.alert-danger {
+  padding: 1rem;
+  background-color: rgb(255, 108, 108);
+  border-radius: 10px;
+  text-align: center;
+}
+
+
+h1.text-center {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.form {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form input {
+  padding: 0.5rem 0;
+}
+
+.form button {
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+}
