@@ -340,6 +340,10 @@ a {
     text-align: center;
   }
 
+  .pizza-form {
+    width: 90%;
+  }
+
   .pizza-header {
     position: relative;
     padding: 0;
@@ -361,6 +365,10 @@ a {
 
   .hero .text h1 {
     font-size: 30px;
+  }
+
+  .pizza-details-card {
+    width: 90%;
   }
 }
 
@@ -400,4 +408,22 @@ a {
   border: 1px solid #dddd;
   padding: 1rem;
   cursor: pointer;
+}
+
+.selected {
+  background-color: black;
+  color: white;
+}
+
+.mt-3 {
+  margin-top: 2rem;
+}
+
+.error-box {
+  padding: 2rem;
+  margin: 0 auto;
+  width: 60%;
+  margin-top: 2rem;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.096);
+  text-align: center;
 }

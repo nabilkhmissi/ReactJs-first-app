@@ -1,26 +1,26 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 import PizzaDetailsNav from "./pizza-details-nav";
 
+
+
+export async function loader({ params }) {
+  const details = await getDetails(params);
+  return details.data;
+}
+
+function getDetails(params) {
+  return axios.get(`/pizzas/${params.id}.json`);
+}
+
 export default function PizzaDetails({ closeDetails }) {
-
-  const [pizza, setPizza] = useState(null)
-  const params = useParams()
-
-  const id = params.id;
-
-  useEffect(() => {
-    axios.get(`/pizzas/${id}.json`)
-      .then(response => setPizza(response.data))
-  }, [id])
-
+  const pizza = useLoaderData();
   return (
     <>
       <div style={{ textAlign: "center", padding: "1rem 0" }}>
-        <Link to="../.." relative="path" >Go Back</Link>
+        <Link to="/menu" relative="path" >Go Back</Link>
       </div >
-      {pizza && (<div className="backdrop">
+      <div className="backdrop">
         <div className="pizza-details-card">
           <div className="image">
             <img src={pizza.image} alt={pizza.name} />
@@ -33,8 +33,7 @@ export default function PizzaDetails({ closeDetails }) {
           <PizzaDetailsNav />
           <Outlet context={pizza} />
         </div>
-      </div>)
-      }
+      </div>
     </>
   );
 }
