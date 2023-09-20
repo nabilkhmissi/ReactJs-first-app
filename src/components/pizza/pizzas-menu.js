@@ -1,6 +1,6 @@
 import axios from "axios";
 import Pizza from "./pizza";
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { redirect, useLoaderData, useSearchParams } from "react-router-dom";
 
 
 export function pizzaLoader() {
@@ -15,7 +15,13 @@ export function pizzaLoader() {
         }
         const data = await axios
             .get("https://pizza-api-753ec-default-rtdb.firebaseio.com/pizzas.json");
-        return processResponse(data)
+
+        const isLoggedIn = true;
+        if (!isLoggedIn) {
+            return redirect("/login")
+        }
+        return processResponse(data);
+
     }
 
     function processResponse(response) {
