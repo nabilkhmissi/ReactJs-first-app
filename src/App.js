@@ -14,6 +14,9 @@ import PizzaDetailsPricing from "./components/pizza/pizza-details-pricing";
 import PageNotFound from "./components/pizza/pageNotFound";
 import Error from "./components/pizza/error";
 import Login from "./components/pizza/login";
+import ProtectedRoute from "./components/pizza/protected-route";
+import Account from "./components/pizza/account";
+import MyCart from "./components/pizza/my-cart";
 
 export default function App() {
 
@@ -21,20 +24,14 @@ export default function App() {
     <Route path="/" element={<Layout />} >
       <Route index element={<PizzaHero />}></Route>
       <Route path="add" element={<PizzaForm />} />
-      <Route path="login" element={<Login />} />
-
-
+      <Route path="login"
+        element={<Login />} />
       <Route
-        path="purshases"
-        element={<h1>My purshases</h1>}
-        loader={async () => {
-          const isLoggedIn = true;
-          if (!isLoggedIn) {
-            return redirect("/login")
-          }
-          return null
-        }}
-      />
+        path="protected"
+        element={<ProtectedRoute />}>
+        <Route index element={<Account />} />
+        <Route path="cart" element={<MyCart />} />
+      </Route>
 
 
       <Route path="menu" element={<Menu />}>
