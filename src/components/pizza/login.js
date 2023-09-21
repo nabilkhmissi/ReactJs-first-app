@@ -1,23 +1,18 @@
 import { useState } from "react";
-import { useLoaderData, useNavigate } from "react-router-dom"
+import { useNavigate, useOutletContext, useSearchParams } from "react-router-dom"
 
 import { loginUser } from "../utils/utils"
 
-
-export function loader({ request }) {
-    return new URL(request.url).searchParams.get("message")
-}
-
-export function LoginAction() {
-
-}
-
 export default function Login() {
-
     const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams();
+    const redirectTo = searchParams.get("redirectTo");
+    const message = searchParams.get("message");
+
+    const [isLoggedIn, setIsLoggedIn] = useOutletContext()
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const message = useLoaderData();
 
     const [status, setStatus] = useState("idle")
     const [error, setError] = useState(null)
@@ -27,8 +22,13 @@ export default function Login() {
         setStatus("submitting")
         loginUser()
             .then(data => {
-                console.log(data);
-                navigate("/menu", { replace: true })
+                localStorage.setItem("pizza_user", data);
+                setIsLoggedIn(true)
+                if (searchParams) {
+                    navigate(redirectTo, { replace: true })
+                } else {
+                    navigate("/menu", { replace: true })
+                }
             })
             .catch(error => setError(error.message))
             .finally(() => setStatus("idle"))
@@ -48,7 +48,7 @@ export default function Login() {
         <>
             <h1 className="text-center">login page</h1>
             <form className="form">
-                {message && <p className="alert-warning">{message} </p>}
+                {!error && message && <p className="alert-warning">{message} </p>}
                 {error && <p className="alert-danger">{error} </p>}
                 <div className="form-group">
                     <label>Email</label>

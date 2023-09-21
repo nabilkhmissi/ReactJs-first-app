@@ -13,8 +13,10 @@ import PizzaDetailsImages from "./components/pizza/pizza-details-images";
 import PizzaDetailsPricing from "./components/pizza/pizza-details-pricing";
 import PageNotFound from "./components/pizza/pageNotFound";
 import Error from "./components/pizza/error";
-import Login, { loader as login_loder } from "./components/pizza/login";
-import ProtectedRoute, { loader as protected_route } from "./components/pizza/protected-route";
+import Login from "./components/pizza/login";
+import ProtectedRoute from "./components/pizza/protected-route";
+import Account from "./components/pizza/account";
+import MyCart from "./components/pizza/my-cart";
 
 export default function App() {
 
@@ -23,15 +25,13 @@ export default function App() {
       <Route index element={<PizzaHero />}></Route>
       <Route path="add" element={<PizzaForm />} />
       <Route path="login"
-        element={<Login />}
-        loader={login_loder} />
-
-
+        element={<Login />} />
       <Route
-        path="purshases"
-        element={<ProtectedRoute />}
-        loader={protected_route}
-      />
+        path="protected"
+        element={<ProtectedRoute />}>
+        <Route index element={<Account />} />
+        <Route path="cart" element={<MyCart />} />
+      </Route>
 
 
       <Route path="menu" element={<Menu />}>
